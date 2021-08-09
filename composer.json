@@ -1,0 +1,18 @@
+{
+    "name": "arashrasoulzadeh/piped",
+    "description": "pipe implementation for php",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Arashrasoulzadeh\\Piped\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "arashrasoulzadeh",
+            "email": "arashrasoulzadeh@gmail.com"
+        }
+    ],
+    "require": {}
+}
