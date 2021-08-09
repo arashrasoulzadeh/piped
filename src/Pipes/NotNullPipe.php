@@ -5,6 +5,10 @@ namespace arashrasoulzadeh\piped\Pipes;
 use arashrasoulzadeh\piped\Abstracts\Pipe;
 use arashrasoulzadeh\piped\Exceptions\BreakPipeException;
 
+/**
+ * check if a given/all/first index is not null,
+ * this will break the pipeline if item is null
+ */
 class NotNullPipe extends Pipe
 {
     public function command()
