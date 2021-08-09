@@ -29,6 +29,11 @@ class NotNullPipe extends Pipe
                     }
                 }
             }
+            if ($indexes === 'last') {
+                if (is_null($this->last_output)) {
+                    throw new BreakPipeException();
+                }
+            }
         }
         return $this->last_output;
     }
