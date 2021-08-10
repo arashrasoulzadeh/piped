@@ -3,7 +3,6 @@
 namespace arashrasoulzadeh\piped\Pipes;
 
 use arashrasoulzadeh\piped\Abstracts\Pipe;
-use arashrasoulzadeh\piped\Exceptions\BreakPipeException;
 
 /**
  * Sum all items in args array

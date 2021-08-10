@@ -65,6 +65,20 @@ echo $pipe->output(); // 1-2-3-4
 
 ```
 
+you may also pipe an annoymouse function :
+
+```php
+use arashrasoulzadeh\piped\Piped;
+use arashrasoulzadeh\piped\Pipes\MapPipe;
+
+$pipe =  Piped::build()->pipe(1,2,3,4)->through(
+	 [MapPipe::class,function ($item,$index) { return $item+1; }] ,
+);
+
+echo $pipe->output(); // 2,3,4,5
+
+```
+
 #### Available pipes
 
 There are some pre-build Pipes in the library:
@@ -74,3 +88,4 @@ There are some pre-build Pipes in the library:
 - SumAllPipe : sum all input numbers
 
 - NotNullPipe : check if all/some/first input item is null,if so break the pipeline. you may prvide `*` for all items, or an array of indexes for checking ( default is first index )
+- MapPipe : map an anonymous function to last output ( per item if array )

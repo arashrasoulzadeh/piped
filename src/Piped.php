@@ -29,6 +29,8 @@ class Piped
      */
     public function through(...$pipes): Piped
     {
+        $this->output = $this->args;
+
         foreach ($pipes as $pipe) {
             try {
                 if ($pipe instanceof Closure) {

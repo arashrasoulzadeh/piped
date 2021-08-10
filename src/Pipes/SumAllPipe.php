@@ -12,6 +12,7 @@ class SumAllPipe extends Pipe
 {
     public function command()
     {
+        $this->last_output = 0;
         foreach ($this->args as $arg) {
             if (!is_numeric($arg)) {
                 throw new BreakPipeException();
