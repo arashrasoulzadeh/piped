@@ -13,6 +13,7 @@ class ConcatAllPipe extends Pipe
     {
         $custom_seperator = $this->pickArg($this->custom_args[0]);
         $seperator = is_null($custom_seperator) ? " " : $custom_seperator;
+        $this->args = array_filter($this->args);
         return implode($seperator, $this->args);
     }
 }
