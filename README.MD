@@ -1,4 +1,4 @@
-[![PHP Composer](https://github.com/arashrasoulzadeh/piped/actions/workflows/php.yml/badge.svg)](https://github.com/arashrasoulzadeh/piped/actions/workflows/php.yml)
+[![arashrasoulzadeh](https://circleci.com/gh/arashrasoulzadeh/piped.svg?style=svg)](https://circleci.com/gh/arashrasoulzadeh/piped)
 
 Simple implementation of pipeline in php, you can use this library to pipe a series of functions and/or classes to be executed sequentialy, piped also supports breaking out of pipeline and reverting.
 
