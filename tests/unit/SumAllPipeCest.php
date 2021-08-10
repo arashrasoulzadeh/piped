@@ -14,7 +14,7 @@ class SumAllPipeCest
     }
 
     // tests
-    public function sampleSumAllTest(UnitTester $I)
+    public function sumAllTest(UnitTester $I)
     {
         $range=$this->createRange(4); // 10
         $pipe = Piped::build()->pipe(...$range)->through(
@@ -24,9 +24,9 @@ class SumAllPipeCest
     }
 
 
-    public function sampleSumAllSmallArrayTest(UnitTester $I)
+    public function sumAllSmallArrayTest(UnitTester $I)
     {
-        $range=$this->createRange(5000); // 50005000
+        $range=$this->createRange(5000); // 12502500
         $pipe = Piped::build()->pipe(...$range)->through(
             SumAllPipe::class
         );
@@ -34,7 +34,7 @@ class SumAllPipeCest
     }
 
 
-    public function sampleSumAllLargeArrayTest(UnitTester $I)
+    public function sumAllLargeArrayTest(UnitTester $I)
     {
         $range=$this->createRange(10000); // 50005000
         $pipe = Piped::build()->pipe(...$range)->through(
@@ -43,13 +43,22 @@ class SumAllPipeCest
         $I->assertEquals($pipe->output(),50005000);
     }
 
-    public function sampleSumAllHugeArrayTest(UnitTester $I)
+    public function sumAllHugeArrayTest(UnitTester $I)
     {
-        $range=$this->createRange(999999); // 50005000
+        $range=$this->createRange(999999); // 499999500000
         $pipe = Piped::build()->pipe(...$range)->through(
             SumAllPipe::class
         );
         $I->assertEquals($pipe->output(),499999500000);
+    }
+
+      public function sumAllWithNullArrayTest(UnitTester $I)
+    {
+        $range=[1,2,null,3,null,4]; // 10
+        $pipe = Piped::build()->pipe(...$range)->through(
+            [SumAllPipe::class,false]
+        );
+        $I->assertEquals($pipe->output(),10);
     }
 
 }

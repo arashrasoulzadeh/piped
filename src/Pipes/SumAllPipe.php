@@ -13,11 +13,18 @@ class SumAllPipe extends Pipe
     public function command()
     {
         $this->last_output = 0;
+        $should_brake_if_null = $this->pickArg($this->custom_args[0]); // send true/false
+        if (is_null($should_brake_if_null)) {
+            $should_brake_if_null = true;
+        }
         foreach ($this->args as $arg) {
             if (!is_numeric($arg)) {
-                throw new BreakPipeException();
+                if ($should_brake_if_null) {
+                    throw new BreakPipeException();
+                }
+            } else {
+                $this->last_output += $arg;
             }
-            $this->last_output += $arg;
         }
         return $this->last_output;
     }
