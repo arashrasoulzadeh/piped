@@ -23,6 +23,17 @@ class SumAllPipeCest
         $I->assertEquals($pipe->output(),10);
     }
 
+
+    public function sampleSumAllSmallArrayTest(UnitTester $I)
+    {
+        $range=$this->createRange(5000); // 50005000
+        $pipe = Piped::build()->pipe(...$range)->through(
+            SumAllPipe::class
+        );
+        $I->assertEquals($pipe->output(),12502500);
+    }
+
+
     public function sampleSumAllLargeArrayTest(UnitTester $I)
     {
         $range=$this->createRange(10000); // 50005000
