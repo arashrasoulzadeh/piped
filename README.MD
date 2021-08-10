@@ -15,7 +15,9 @@ use the following command to add Piped to your projects:
 You should create new Pipe Class that extends `arashrasoulzadeh\piped\Abstracts\Pipe` and override `command` method. there are some parametters you can override :
 
 - `rollback` enable revert the pipe if an error occured.
+
 - `throw_error` enable this to throw error insted of executing the rest of the pipe
+
 - `custom_args` arguments that passed as the second input of pipe array, refer to usage for more info
 
 #### Usage
@@ -29,7 +31,9 @@ use arashrasoulzadeh\piped\Pipes\SumAllPipe;
 $pipe =  Piped::build()->pipe(1,2,3,4)->through(
 	SumAllPipe::class,
 );
+
 echo $pipe->output(); // 10
+
 ```
 
 you may also pass custom arguments to pipe ( can be accessed by `custom_args` array in the pipe) like :
@@ -41,7 +45,9 @@ use arashrasoulzadeh\piped\Pipes\ConcatAllPipe;
 $pipe =  Piped::build()->pipe(1,2,3,4)->through(
 	[ ConcatAllPipe::class,'-' ],
 );
+
 echo $pipe->output(); // 1-2-3-4
+
 ```
 
 you can provide unlimited numbers of pipes in `through` method, like :
@@ -51,10 +57,12 @@ use arashrasoulzadeh\piped\Piped;
 use arashrasoulzadeh\piped\Pipes\ConcatAllPipe;
 
 $pipe =  Piped::build()->pipe(1,2,3,4)->through(
-    [ NotNullPipe::class , '*' ]
-	[ ConcatAllPipe::class,'-' ],
+	[ NotNullPipe::class , '*' ],
+	[ ConcatAllPipe::class,'-' ]
 );
+
 echo $pipe->output(); // 1-2-3-4
+
 ```
 
 #### Available pipes
@@ -62,5 +70,7 @@ echo $pipe->output(); // 1-2-3-4
 There are some pre-build Pipes in the library:
 
 - ConcatAllPipe : concatenate all inputs together using provided custom argument ( space as deafult )
+
 - SumAllPipe : sum all input numbers
+
 - NotNullPipe : check if all/some/first input item is null,if so break the pipeline. you may prvide `*` for all items, or an array of indexes for checking ( default is first index )
