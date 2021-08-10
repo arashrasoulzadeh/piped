@@ -27,4 +27,11 @@ class ConcatAllPipeCest
         );
         $I->assertEquals($pipe->output(),'a-b-c');
     }
+    public function concatAllCustomArgParamWithNullArgTest(UnitTester $I)
+    {
+        $pipe = Piped::build()->pipe('a','b',null,'c')->through(
+            [ConcatAllPipe::class,null]
+        );
+        $I->assertEquals($pipe->output(),'a b c');
+    }
 }
