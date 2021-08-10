@@ -8,7 +8,7 @@ class NotNullPipeCest
 
 
     // tests
-    public function sampleNotNullBreakTest(UnitTester $I)
+    public function notNullBreakTest(UnitTester $I)
     {
         $pipe = Piped::build()->pipe(null,'b','c')->through(
             NotNullPipe::class,
@@ -16,7 +16,7 @@ class NotNullPipeCest
         );
         $I->assertEquals($pipe->output(),[null,'b','c']);
     }
-    public function sampleNotNullAllItemsBreakTest(UnitTester $I)
+    public function notNullAllItemsBreakTest(UnitTester $I)
     {
         $pipe = Piped::build()->pipe('a',null,'c')->through(
             [NotNullPipe::class,'*'],
@@ -24,7 +24,7 @@ class NotNullPipeCest
         );
         $I->assertEquals($pipe->output(),['a',null,'c']);
     }
-    public function sampleNotNullCustomItemBreakTest(UnitTester $I)
+    public function notNullCustomItemBreakTest(UnitTester $I)
     {
         $pipe = Piped::build()->pipe('a',null,'c')->through(
             [NotNullPipe::class,[1]],
