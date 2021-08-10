@@ -52,13 +52,22 @@ class SumAllPipeCest
         $I->assertEquals($pipe->output(),499999500000);
     }
 
-      public function sumAllWithNullArrayTest(UnitTester $I)
+    public function sumAllWithNullArrayWithBreakTest(UnitTester $I)
     {
         $range=[1,2,null,3,null,4]; // 10
         $pipe = Piped::build()->pipe(...$range)->through(
             [SumAllPipe::class,false]
         );
         $I->assertEquals($pipe->output(),10);
+    }
+
+    public function sumAllWithNullArrayWithoutBreakTest(UnitTester $I)
+    {
+        $range=[1,2,null,3,null,4]; // 10
+        $pipe = Piped::build()->pipe(...$range)->through(
+            SumAllPipe::class
+        );
+        $I->assertEquals($pipe->output(),$range);
     }
 
 }

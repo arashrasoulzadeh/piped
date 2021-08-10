@@ -87,7 +87,7 @@ There are some pre-build Pipes in the library:
 
 - ConcatAllPipe : concatenate all inputs together using provided custom argument ( space as deafult )
 
-- SumAllPipe : sum all input numbers
+- SumAllPipe : sum all input numbers ( you may send false as first custom argument if you dont wanna break the pipe if one of array items is not a numeric )
 
 - NotNullPipe : check if all/some/first input item is null,if so break the pipeline. you may prvide `*` for all items, or an array of indexes for checking ( default is first index )
 - MapPipe : map an anonymous function to last output ( per item if array )
