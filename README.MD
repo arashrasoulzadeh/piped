@@ -39,7 +39,20 @@ use arashrasoulzadeh\piped\Piped;
 use arashrasoulzadeh\piped\Pipes\ConcatAllPipe;
 
 $pipe =  Piped::build()->pipe(1,2,3,4)->through(
-	[ConcatAllPipe::class,"-"],
+	[ ConcatAllPipe::class,'-' ],
+);
+echo $pipe->output(); // 1-2-3-4
+```
+
+you can provide unlimited numbers of pipes in `through` method, like :
+
+```php
+use arashrasoulzadeh\piped\Piped;
+use arashrasoulzadeh\piped\Pipes\ConcatAllPipe;
+
+$pipe =  Piped::build()->pipe(1,2,3,4)->through(
+    [ NotNullPipe::class , '*' ]
+	[ ConcatAllPipe::class,'-' ],
 );
 echo $pipe->output(); // 1-2-3-4
 ```
